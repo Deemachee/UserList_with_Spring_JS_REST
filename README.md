@@ -1,5 +1,5 @@
 # PP_3_1_4
-БД: dbc:mysql://localhost:3306/Kata
+БД: jdbc:mysql://localhost:3306/Kata
 username=root
 password=12345678
 

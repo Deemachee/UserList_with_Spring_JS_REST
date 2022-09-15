@@ -23,11 +23,12 @@
     <div class="row mt-3">
         <!--Вертикальная навигационная панель сбоку-->
         <div class=" col-12 ml-0 nav" role="tablist" id="vertical_navigation" aria-orientation="vertical">
-            <div class="col-2 pt-3 px-0 nav flex-column nav-pills" style="background-color: white">
-                <!--Кнопка User в боковой панели-->
-                <a class="nav-link" id="vertical_navigation-user" data-toggle="tab" href="#user_panel" role="tab"
-                   aria-controls="user-panel" aria-selected="true"
-                   sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')">User</a>
+            <div class="col-sm-2 bg-white min-vh-100">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/user}">User</a>
+                    </li>
+                </ul>
             </div>
 
             <!--                Панель юзера-->

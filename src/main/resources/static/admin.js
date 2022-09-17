@@ -230,6 +230,7 @@ allUsersTable.addEventListener("click", e => {
     const editUsersLastName = document.getElementById("edit-lastName");
     const editUsersAge = document.getElementById("edit-age");
     const editUsersEmail = document.getElementById("edit-email");
+    const editUsersPassword = document.getElementById("edit-password")
 
     if (editButtonIsPressed) {
         let currentUserId = e.target.dataset.id;
@@ -247,8 +248,9 @@ allUsersTable.addEventListener("click", e => {
                 editUsersLastName.value = user.lastName;
                 editUsersAge.value = user.age;
                 editUsersEmail.value = user.email;
+                editUsersPassword.value = user.password;
 
-                let editRoles = user.roles.map(i => i.roleName)
+                let editRoles = user.roles.map(i => i.name)
                 editRoles.forEach(
                     role => {
                         if (role === "ROLE_ADMIN") {
@@ -269,6 +271,7 @@ allUsersTable.addEventListener("click", e => {
                 lastName: editUsersLastName.value,
                 age: editUsersAge.value,
                 email: editUsersEmail.value,
+                password: editUsersPassword.value,
                 roles: getRolesFromEditUserForm()
             }
             fetch(`${requestURL}/${currentUserId}`, {

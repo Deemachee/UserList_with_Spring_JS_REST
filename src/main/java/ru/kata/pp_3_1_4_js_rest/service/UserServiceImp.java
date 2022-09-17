@@ -13,7 +13,7 @@ import ru.kata.pp_3_1_4_js_rest.repository.UserRepository;
 
 import java.util.List;
 
-@Service ("userServiceImp")
+@Service("userServiceImp")
 @AllArgsConstructor
 public class UserServiceImp implements UserService {
 
@@ -40,13 +40,14 @@ public class UserServiceImp implements UserService {
     @Override
     @Transactional
     public User update(User user, int id) {
-        User existingUser = userRepository.findById(id).orElseThrow();
-        existingUser.setName(user.getName());
-        existingUser.setLastName(user.getLastName());
-        existingUser.setAge(user.getAge());
-        existingUser.setEmail(user.getEmail());
-        existingUser.setRoles(user.getRoles());
-        return userRepository.save(existingUser);
+        String newPassword = user.getPassword();
+        String existPassword = userRepository.findById(id).orElseThrow().getPassword();
+        if (newPassword.equals(existPassword) || bCryptPasswordEncoder.matches(newPassword, existPassword)) {
+            user.setPassword(existPassword);
+        } else {
+            user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+        }
+        return userRepository.save(user);
     }
 
     @Override

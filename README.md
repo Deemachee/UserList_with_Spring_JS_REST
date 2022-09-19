@@ -1,4 +1,3 @@
-# PP_3_1_4
 БД: jdbc:mysql://localhost:3306/Kata
 username=root
 password=12345678
